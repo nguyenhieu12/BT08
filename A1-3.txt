@@ -1,0 +1,49 @@
+1. #include <iostream>
+
+using namespace std;
+void f(int xval)
+{
+   int x;
+   x = xval;
+   // in địa chỉ của x tại đây
+   cout << &x << " ";
+}
+void g(int yval)
+{
+   int y;
+   // in địa chỉ của y tại đây
+   cout << &y;
+;}
+int main()
+{
+   f(7);
+   g(11);
+   return 0;
+}
+
+// 2 biến x và y có cùng địa chỉ
+
+2. a, chương trình chạy và in ra địa chỉ, giá trị của từng phần tử (địa chỉ hơn kém nhau 1 byte do có kiểu char)
+   b, địa chỉ và giá trị các phần tử được in ra (địa chỉ mỗi phần tử cách nhau 4 bytes do có kiểu int)
+   c, địa chỉ và giá trị các phần tử được in ra (địa chỉ mỗi phần tử cách nhau 8 bytes do có kiểu double)
+   d, địa chỉ các phần tử cách nhay 16 bytes
+3. cần truyền địa chỉ của 2 con trỏ s1, s2 vào hàm và tham số của hàm là con trỏ trỏ tới con trỏ
+   void swap_pointers(char** x, char** y)
+{
+   char *tmp;
+   tmp = *x;
+   *x = *y;
+   *y = tmp;
+}
+int main()
+{
+   char a[] = "I should print second";
+   char b[] = "I should print first";
+
+   char *s1 = a;
+   char *s2 = b;
+   swap_pointers(&s1,&s2);
+   cout << "s1 is " << s1 << endl;
+   cout << "s2 is " << s2 << endl;
+   return 0;
+}
